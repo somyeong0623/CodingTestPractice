@@ -4,7 +4,7 @@ package Programmers.Hash;
 import java.util.HashMap;
 
 
-class Solution {
+class lv1_2 {
     public String solution(String[] participant, String[] completion) {
         String answer = "";
         

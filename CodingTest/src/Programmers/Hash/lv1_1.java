@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.Set;
 import java.util.HashSet;
 
-class Solution {
+class lv1_1 {
     public int solution(int[] nums) {
         int answer = 0;
         
