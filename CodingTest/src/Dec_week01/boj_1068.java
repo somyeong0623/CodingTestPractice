@@ -24,7 +24,8 @@ public class boj_1068 {
 		parent = new int[n];
 
 		list = new ArrayList[n]; 
-		for (int i = 0; i < n; i++) { // 리스트배열 초기화 
+		// 리스트배열 초기화 
+		for (int i = 0; i < n; i++) { 
 			list[i] = new ArrayList<Integer>();
 		}
 
@@ -32,14 +33,17 @@ public class boj_1068 {
 		target = Integer.parseInt(br.readLine());
 		for (int i = 0; i < n; i++) {
 //			list[i] = new ArrayList<Integer>(); // 6번째아래에 list[x].add(i) 코드가 있기 때문에 list[]를 미리 초기화 안하면 NullPointerError발생한다 
-			int x = Integer.parseInt(st.nextToken()); //x: i번째 노드의 부모 인덱스 
-			parent[i] = x; // 부모 노드 인덱스 저장 
+			int x = Integer.parseInt(st.nextToken()); //x: i번째 노드의 부모 번호 
+			parent[i] = x; // 부모가 누구인지 번호 저장 
 			if (x == -1)
 				continue;
 			cnt[x]++; // 자식 수 증가 
 			list[x].add(i);
 		}
-		if (parent[target] == -1) { // 삭제하는 노드가 루트노드인경우 0출력하고 종료 
+		
+		
+		// 삭제하는 노드가 루트노드인경우 0출력하고 종료 
+		if (parent[target] == -1) { 
 			answer = 0;
 			System.out.println(answer);
 			return;
@@ -47,7 +51,6 @@ public class boj_1068 {
 
 		func(target);
 		for (int i = 0; i < n; i++) {
-//			System.out.println(i + "의 cnt: " + cnt[i]); 
 			if (cnt[i] == 0)
 				answer++;
 		}
@@ -56,7 +59,6 @@ public class boj_1068 {
 	}
 
 	public static void func(int x) {
-//		cnt[x] = -1; // 삭제된 노드 처리 
 		cnt[parent[x]]--; // 삭제된 노드의 부모의 자식수 1 감소 
 		for (int i = 0; i < list[x].size(); i++) {
 			int next = list[x].get(i);
